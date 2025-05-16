@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Explore the World - Travel</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: #f0f4f8;
+    color: #333;
+    scroll-behavior: smooth;
+  }
+  header {
+    background-color: #0088a9;
+    color: white;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  header .logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+  }
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 1.8rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  nav a:hover {
+    color: #f4d35e;
+  }
+  main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  .hero {
+    position: relative;
+    height: 60vh;
+    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    padding: 2rem;
+    text-shadow: 0 0 15px rgba(0,0,0,0.5);
+  }
+  .hero h1 {
+    font-size: 3.2rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+  }
+  .hero p {
+    font-size: 1.3rem;
+    max-width: 550px;
+    margin-bottom: 1.5rem;
+  }
+  .btn-primary {
+    background-color: #f4d35e;
+    color: #005f73;
+    border: none;
+    padding: 1rem 2rem;
+    font-weight: 700;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    width: fit-content;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 6px 18px rgba(244, 211, 94, 0.5);
+  }
+  .btn-primary:hover {
+    background-color: #e1c94c;
+  }
+  section.destinations {
+    margin-top: 3rem;
+  }
+  section.destinations h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #005f73;
+  }
+  .dest-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 2rem;
+  }
+  .card {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+  }
+  .card:hover {
+    transform: translateY(-8px);
+  }
+  .card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  .card-content {
+    padding: 1.25rem 1rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .card-content h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: #0088a9;
+  }
+  .card-content p {
+    flex-grow: 1;
+    color: #555;
+    font-size: 1rem;
+  }
+  /* Travel Inquiry Form */
+  .inquiry {
+    margin-top: 4rem;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+    padding: 2rem 1.5rem;
+    max-width: 600px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .inquiry h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #005f73;
+    font-size: 2rem;
+  }
+  .inquiry form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .inquiry label {
+    font-weight: 600;
+    color: #004d59;
+  }
+  .inquiry input,
+  .inquiry select,
+  .inquiry textarea {
+    padding: 0.85rem 1rem;
+    border-radius: 8px;
+    border: 1.8px solid #ccc;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+    transition: border-color 0.3s ease;
+  }
+  .inquiry input:focus,
+  .inquiry select:focus,
+  .inquiry textarea:focus {
+    outline: none;
+    border-color: #0088a9;
+  }
+  .inquiry button {
+    align-self: center;
+    background-color: #0088a9;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0,136,169,0.5);
+    transition: background-color 0.3s ease;
+  }
+  .inquiry button:hover {
+    background-color: #006b7a;
+  }
+  .success-message {
+    color: #2f7a2f;
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: 700;
+  }
+  /* Responsive */
+  @media (max-width: 600px){
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+    .card img {
+      height: 160px;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Explore the World</div>
+  <nav>
+    <a href="#destinations">Destinations</a>
+    <a href="#inquiry">Travel Inquiry</a>
+    <a href="#footer" tabindex="-1" aria-hidden="true" style="visibility:hidden;">Hidden</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" role="banner" aria-label="Travel hero section with slogan">
+    <h1>Discover Your Next Adventure</h1>
+    <p>Travel the world, experience new cultures, and create unforgettable memories.</p>
+    <p class="text-shadow">Keliling Papua City</p>
+    <button class="btn-primary" aria-label="Get Started with Travel Inquiry Form" onclick="document.getElementById('inquiry').scrollIntoView({behavior:'smooth'})">Get Started</button>
+  </section>
+
+  <section class="destinations" id="destinations" aria-label="Popular travel destinations">
+    <h2>Popular Destinations</h2>
+    <div class="dest-cards">
+      <article class="card" tabindex="0" aria-describedby="dest1-desc">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Beach in Maldives" />
+        <div class="card-content">
+          <h3>Maldives</h3>
+          <p id="dest1-desc">Relax in the paradise islands with crystal clear waters and white sandy beaches.</p>
+        </div>
+      </article>
+      <article class="card" tabindex="0" aria-describedby="dest2-desc">
+        <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=800&q=80" alt="Eiffel Tower, Paris" />
+        <div class="card-content">
+          <h3>Paris, France</h3>
+          <p id="dest2-desc">Explore the city of lights, enjoy world-class art, cuisine and romance.</p>
+        </div>
+      </article>
+      <article class="card" tabindex="0" aria-describedby="dest3-desc">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Mount Fuji, Japan" />
+        <div class="card-content">
+          <h3>Mount Fuji, Japan</h3>
+          <p id="dest3-desc">Experience breathtaking views and rich cultural heritage at Japan’s iconic mountain.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="inquiry" id="inquiry" aria-label="Travel inquiry form section">
+    <h2>Plan Your Trip</h2>
+    <form id="travelForm" novalidate>
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Your full name" required autocomplete="name" />
+      
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="email@example.com" required autocomplete="email" />
+      
+      <label for="destination">Destination</label>
+      <select id="destination" name="destination" required>
+        <option value="" disabled selected>Select destination</option>
+        <option>Maldives</option>
+        <option>Paris</option>
+        <option>Mount Fuji</option>
+        <option>Bali</option>
+        <option>New York</option>
+      </select>
+      
+      <label for="message">Additional Questions or Requests</label>
+      <textarea id="message" name="message" rows="4" placeholder="Tell us about your travel plans..."></textarea>
+      
+      <button type="submit">Submit Inquiry</button>
+      <div id="formMessage" class="success-message" role="alert" aria-live="polite"></div>
+    </form>
+  </section>
+</main>
+
+
+<footer id="footer" style="text-align:center; padding:1rem; color:#666; font-size:0.8rem;">
+  &copy; 2024 Explore the World Travel Agency papua ciyt | All rights reserved.
+  <br />Wakey Travel Agency | <a href="https://www.example.com/privacy" style="color:#0088a9;">Privacy Policy</a>
+</footer>
+
+<script>
+  (function(){
+    const form = document.getElementById('travelForm');
+    const messageEl = document.getElementById('formMessage');
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      messageEl.textContent = '';
+
+      if(!form.checkValidity()){
+        messageEl.textContent = 'Please fill in all required fields correctly.';
+        messageEl.style.color = '#d32f2f';
+        return;
+      }
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const destination = form.destination.value;
+      const message = form.message.value.trim();
+
+      if(name.length < 3){
+        messageEl.textContent = 'Name should be at least 3 characters.';
+        messageEl.style.color = '#d32f2f';
+        return;
+      }
+      if(!email.includes('@')){
+        messageEl.textContent = 'Please enter a valid email.';
+        messageEl.style.color = '#d32f2f';
+        return;
+      }
+      // Here normally would send data to backend or API, instead just simulate success
+      form.reset();
+      messageEl.style.color = '#2f7a2f';
+      messageEl.textContent = `Thank you, ${name}! Your inquiry for ${destination} has been received. We will get back to you shortly.`;
+    });
+  })();
+</script>
+</body>
+</html>
+
